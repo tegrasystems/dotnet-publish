@@ -1,0 +1,29 @@
+name: "[.NET]Publish project"
+
+inputs:
+  project-path:
+    required: true
+    type: string
+  publishprofile:
+    required: true
+    type: string
+  password:
+    required: true
+    type: string
+  configuration:
+    required: false
+    type: string
+    default: "Release"
+  additional-arguments:
+    required: false
+    type: string
+    default: ""
+
+runs:
+  using: "composite"
+    steps:
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Build and deploy Application        
+        run: msbuild ${{ inputs.project-path }} -property:Configuration=${{ inputs.configuration }} /restore /p:DeployOnBuild=true /p:PublishProfile=${{ inputs.publishprofile }} /p:Password=${{ inputs.password }} ${{ inputs.additional-arguments }}
+        shell: pwsh
