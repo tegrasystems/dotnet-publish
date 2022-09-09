@@ -21,9 +21,9 @@ inputs:
 
 runs:
   using: "composite"
-    steps:
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
-      - name: Build and deploy Application        
-        run: msbuild ${{ inputs.project-path }} -property:Configuration=${{ inputs.configuration }} /restore /p:DeployOnBuild=true /p:PublishProfile=${{ inputs.publishprofile }} /p:Password=${{ inputs.password }} ${{ inputs.additional-arguments }}
-        shell: pwsh
+  steps:
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+    - name: Build and deploy Application        
+      run: msbuild ${{ inputs.project-path }} -property:Configuration=${{ inputs.configuration }} /restore /p:DeployOnBuild=true /p:PublishProfile=${{ inputs.publishprofile }} /p:Password=${{ inputs.password }} ${{ inputs.additional-arguments }}
+      shell: pwsh
