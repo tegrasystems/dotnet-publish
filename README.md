@@ -22,6 +22,7 @@ jobs:
                     project-path: PATH_TO_PROJECT
                     publishprofile: PATH_TO_PUBLISHPROFILE
                     password: PASSWORD
+                    version: VERSION
                     configuration: CONFIGURATION
 ```
 
@@ -33,6 +34,7 @@ jobs:
 | project-path | Path to `.csproj` to deploy | string |
 | publishprofile | Path to `.pubxml` of the project to deploy | string |
 | password | Password needed for `publishprofile`  | string |
+| version | The Version that sets `AssemblyVersion` and `FileVersion` | string |
 | configuration | (optional) Name of configuration  | string |
 | additional-arguments | (optional) Additional switches to use in msbuild command, see [msbuild documentation](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-command-line-reference?view=vs-2022#switches) for more information | string |
 

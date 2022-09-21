@@ -10,6 +10,9 @@ inputs:
   password:
     required: true
     type: string
+  version:
+    required: true
+    type: string
   configuration:
     required: false
     type: string
@@ -25,5 +28,5 @@ runs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
     - name: Build and deploy Application        
-      run: msbuild ${{ inputs.project-path }} -property:Configuration=${{ inputs.configuration }} /restore /p:DeployOnBuild=true /p:PublishProfile=${{ inputs.publishprofile }} /p:Password=${{ inputs.password }} ${{ inputs.additional-arguments }}
+      run: msbuild ${{ inputs.project-path }} -property:Configuration=${{ inputs.configuration }} /restore /p:DeployOnBuild=true /p:PublishProfile=${{ inputs.publishprofile }} /p:Password=${{ inputs.password }} /p:AssemblyVersion=${{ inputs.version }} /p:FileVersion=${{ inputs.version }} ${{ inputs.additional-arguments }}
       shell: pwsh
